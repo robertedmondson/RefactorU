@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="GoTApp">
+    <head>
+        <title>Game of Thrones</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body ng-controller="GoTController as gCtrl">
+        <h1>{{gCtrl.greeting}}</h1>
+
+        <form ng-submit="gCtrl.getCharacters()">
+            <input type="text" placeholder="Page number" name="page" ng-model="gCtrl.page">
+            <button type="submit" name="button">Get list of characters</button>
+        </form>
+
+        <ol>
+            <li ng-repeat="char in gCtrl.charList">{{char.name}}</li>
+        </ol>
+
+        <br>
+        <form ng-submit="gCtrl.getCharacter()">
+            <input type="text"  placeholder="Character name" name="charName" ng-model="gCtrl.name">
+            <button type="submit" name="button">Search for a character</button>
+        </form>
+
+        <br>
+        <div ng-show="gCtrl.charData[0].name">
+            <div>Name: {{gCtrl.charData[0].name}}</div> 
+            <div>Gender: {{gCtrl.charData[0].gender}}</div>   
+            <div>Born: {{gCtrl.charData[0].born}}</div>
+            <div>Died: {{gCtrl.charData[0].died}}</div>
+        </div>
+    </body>
+</html>
